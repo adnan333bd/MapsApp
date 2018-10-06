@@ -1,29 +1,46 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
-import ListItems from './src/components/ListItem/ListItems';
+import PlaceList from './src/components/PlaceList/PlaceList';
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 
 export default class App extends Component {
-  state = {    
-    places: []
+  state = {
+    places: [] //{key, value}
   };
-  
+
   placeAddHandler = (place) => {
     this.setState(prevState => {
+      let lastIndex = prevState.places.length;
+
       return {
-        places: prevState.places.concat(place)
+        places: prevState.places.concat({
+          key: (lastIndex).toString(),
+          value: place
+        })
       };
     });
   };
+  onItemDeletedHandler = (key) => {
+
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter(({k, value}) => {
+          return k !== key;
+        })
+      };
+    });
+  }
   render() {
-   
+
 
     return (
       <View style={styles.container} >
-        <PlaceInput 
+        <PlaceInput
           placeAdded={this.placeAddHandler}
         />
-        <ListItems places={this.state.places} />
+        <PlaceList
+          onItemDeleted={this.onItemDeletedHandler}
+          places={this.state.places} />
       </View>
     );
   }

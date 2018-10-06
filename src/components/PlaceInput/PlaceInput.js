@@ -17,9 +17,9 @@ class PlaceInputComponent extends Component {
         if (this.state.placeName.trim() !== '')
             this.props.placeAdded(this.state.placeName.trim());
 
-        this.setState({
+        /* this.setState({
             placeName: ''
-        });
+        }); */
     };
     render() {
         return (

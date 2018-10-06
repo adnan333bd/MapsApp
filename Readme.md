@@ -19,8 +19,8 @@ If you want to get a full list about the supported properties, the following che
 
 If you want to learn more about Flexbox, don't miss this awesome article: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
-##ios sim
+# ios sim
 cmd + d for menu
 
-#android sim 
+# android sim 
 ctrl m for menu
