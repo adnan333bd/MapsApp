@@ -7,24 +7,23 @@ export default class App extends Component {
   state = {
     places: [] //{key, value}
   };
-
+  lastIndex = 0;
   placeAddHandler = (place) => {
     this.setState(prevState => {
-      let lastIndex = prevState.places.length;
-
+      
       return {
         places: prevState.places.concat({
-          key: (lastIndex).toString(),
+          key: (this.lastIndex++).toString(),
           value: place
         })
       };
     });
   };
-  onItemDeletedHandler = (key) => {
+  onItemDeletedHandler = (k) => {
 
     this.setState(prevState => {
       return {
-        places: prevState.places.filter(({k, value}) => {
+        places: prevState.places.filter(({key, value}) => {
           return k !== key;
         })
       };

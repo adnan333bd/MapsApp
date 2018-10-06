@@ -7,11 +7,11 @@ const placeList = (props) => {
         <FlatList
             style={styles.listItems}
             data={props.places}
-            renderItem={({ key, value }) => {
+            renderItem={({ item }) => {
                 return (
                     <ListItem
-                        placeName={value}
-                        onItemPressed={() => props.onItemDeleted(key)}
+                        placeName={item.value}
+                        onItemPressed={() => props.onItemDeleted(item.key)}
                     />
                 );
             }}
